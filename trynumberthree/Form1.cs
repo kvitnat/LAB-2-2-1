@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -20,13 +21,13 @@ namespace trynumberthree
         private void Form1_Load(object sender, EventArgs e)
         {
             // TODO: данная строка кода позволяет загрузить данные в таблицу "myDataSet1.categories". При необходимости она может быть перемещена или удалена.
-            this.categoriesTableAdapter.Fill(this.myDataSet1.categories);
+            this.categoriesTableAdapter.Fill(this.myDataSet.categories);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "myDataSet1.product". При необходимости она может быть перемещена или удалена.
-            this.productTableAdapter.Fill(this.myDataSet1.product);
+            this.productTableAdapter.Fill(this.myDataSet.product);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "myDataSet1.positions". При необходимости она может быть перемещена или удалена.
-            this.positionsTableAdapter.Fill(this.myDataSet1.positions);
+            this.positionsTableAdapter.Fill(this.myDataSet.positions);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "myDataSet1.employee". При необходимости она может быть перемещена или удалена.
-            this.employeeTableAdapter.Fill(this.myDataSet1.employee);
+            this.employeeTableAdapter.Fill(this.myDataSet.employee);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "myDataSet.holders". При необходимости она может быть перемещена или удалена.
             this.holdersTableAdapter.Fill(this.myDataSet.holders);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "myDataSet.bakery". При необходимости она может быть перемещена или удалена.
@@ -37,20 +38,23 @@ namespace trynumberthree
         //save buttons
         private void buttonSaveBakery_Click(object sender, EventArgs e)
         {
+            //SqlCommandBuilder commandBuilder = new SqlCommandBuilder(bakeryTableAdapter);
             this.bakeryTableAdapter.Update(myDataSet.bakery);
-            myDataSet.AcceptChanges();
         }
 
         private void buttonEmplSave_Click(object sender, EventArgs e)
         {
-            this.employeeTableAdapter.Update(myDataSet.employee);
-            myDataSet.AcceptChanges();
+            try
+            {
+                this.employeeTableAdapter.Update(myDataSet.employee);
+                Console.WriteLine("updating empl");
+            }
+            catch { Console.WriteLine("update failed"); }
         }
 
         private void buttonProdSave_Click(object sender, EventArgs e)
         {
             this.productTableAdapter.Update(myDataSet.product);
-            myDataSet.AcceptChanges();
         }
 
         //delete buttons
