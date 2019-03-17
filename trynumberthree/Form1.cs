@@ -57,20 +57,112 @@ namespace trynumberthree
             this.productTableAdapter.Update(myDataSet.product);
         }
 
+        private void buttonAddEmployee_Click(object sender, EventArgs e)
+        {
+            string emName = textBoxName.Text;
+            string emSurname = textBoxSurname.Text;
+            string emPos = comboBoxPos.SelectedValue.ToString();
+            string emBakery = comboBoxBakery.SelectedValue.ToString();
+
+            string sql = string.Format("Insert Into employee" +
+                   "(EM_NAME, EM_SURNAME, EM_BK, EM_P) Values(@emN, @emS, @emB, @emP)");
+
+            using (SqlCommand cmd = new SqlCommand(sql, bakeryTableAdapter.Connection))
+            {
+                cmd.Parameters.AddWithValue("@emN", emName);
+                cmd.Parameters.AddWithValue("@emS", emSurname);
+                cmd.Parameters.AddWithValue("@emB", emBakery);
+                cmd.Parameters.AddWithValue("@emP", emPos);
+
+                bakeryTableAdapter.Connection.Open();
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                }
+                catch
+                {
+                    MessageBox.Show("Не удалось добавить сотрудника.");
+                }
+            }
+            myDataSet.employee.Clear();
+            employeeTableAdapter.Fill(myDataSet.employee);
+        }
+
         //delete buttons
         private void buttonDelRowBakery_Click(object sender, EventArgs e)
         {
-            this.bakeryBindingSource.RemoveCurrent();
+            int r = -1;
+            r = Convert.ToInt32(dataGridView1.CurrentRow.Cells["BK_ID"].Value);
+
+            MessageBox.Show("____" + r + "____");
+            if (employeeTableAdapter.ScalarQuery(r) == 0)
+            {
+                this.bakeryBindingSource.RemoveCurrent();
+                this.bakeryTableAdapter.Update(myDataSet.bakery);
+            }
+            else
+                MessageBox.Show("Нельзя удалить пекарню - увольте работников!");
         }
 
         private void buttonEmplDel_Click(object sender, EventArgs e)
         {
             this.employeeBindingSource.RemoveCurrent();
+            this.employeeTableAdapter.Update(myDataSet.employee);
         }
 
         private void buttonProdDel_Click(object sender, EventArgs e)
         {
             this.productBindingSource.RemoveCurrent();
+            this.productTableAdapter.Update(myDataSet.product);
+        }
+
+
+
+        private void buttonDelCat_Click(object sender, EventArgs e)
+        {
+            int r = -1;
+            r = Convert.ToInt32(dataGridView4.CurrentRow.Cells["CT_ID"].Value);
+
+            MessageBox.Show("____" + r + "____");
+            if (productTableAdapter.ScalarQueryPrCat(r) == 0)
+            {
+                this.categoriesBindingSource.RemoveCurrent();
+                this.categoriesTableAdapter.Update(myDataSet.categories);
+            }
+            else
+                MessageBox.Show("Нельзя удалить непустую категорию");
+        }
+
+        private void buttonProdSearch_Click(object sender, EventArgs e)
+        {
+            find_products();
+        }
+
+        private void find_products()
+        {
+            if (checkBoxProdName.Checked && !checkBoxProdPrice.Checked && !checkBoxProdCateg.Checked)
+            {
+                this.productTableAdapter.FillByProductName(myDataSet.product, "%" + textBoxProdName.Text + "%");
+            }
+
+            if (!checkBoxProdName.Checked && checkBoxProdPrice.Checked && !checkBoxProdCateg.Checked)
+            {
+                try
+                {
+                    decimal priceFrom = Convert.ToDecimal(textBoxProdPriceFrom.Text),
+                            priceTo = Convert.ToDecimal(textBoxProdPriceTo.Text);
+                    this.productTableAdapter.FillByProdPrice(myDataSet.product, priceFrom, priceTo);
+                }
+                catch
+                {
+                    MessageBox.Show("Не удалось считать числовое значение (используйте запятую вместо точки)");
+                }
+            }
+        }
+
+        private void buttonProdDefault_Click(object sender, EventArgs e)
+        {
+            this.productTableAdapter.Fill(myDataSet.product);
         }
     }
 }
