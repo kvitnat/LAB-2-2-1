@@ -158,11 +158,114 @@ namespace trynumberthree
                     MessageBox.Show("Не удалось считать числовое значение (используйте запятую вместо точки)");
                 }
             }
+
+            if (!checkBoxProdName.Checked && !checkBoxProdPrice.Checked && checkBoxProdCateg.Checked)
+            {
+                try
+                {
+                    int prodCatId = Convert.ToInt32(comboBoxProdCategory.SelectedValue);
+                    this.productTableAdapter.FillByProdCateg(myDataSet.product, prodCatId);
+                }
+                catch
+                {
+                    MessageBox.Show("Ошибка категории");
+                }
+            }
+
+            if (checkBoxProdName.Checked && checkBoxProdPrice.Checked && !checkBoxProdCateg.Checked)
+            {
+                try
+                {
+                    decimal priceFrom = Convert.ToDecimal(textBoxProdPriceFrom.Text),
+                            priceTo = Convert.ToDecimal(textBoxProdPriceTo.Text);
+                    this.productTableAdapter.FillByProdNamePrice(myDataSet.product, "%" + textBoxProdName.Text + "%", priceFrom, priceTo);
+                }
+                catch
+                {
+                    MessageBox.Show("Не удалось считать числовое значение (используйте запятую вместо точки)");
+                }
+            }
+
+            if (checkBoxProdName.Checked && !checkBoxProdPrice.Checked && checkBoxProdCateg.Checked)
+            {
+                try
+                {
+                    int prodCatId = Convert.ToInt32(comboBoxProdCategory.SelectedValue);
+                    this.productTableAdapter.FillByProdNameCateg(myDataSet.product, "%" + textBoxProdName.Text + "%", prodCatId);
+                }
+                catch
+                {
+                    MessageBox.Show("Ошибка категории");
+                }
+            }
+
+            if (!checkBoxProdName.Checked && checkBoxProdPrice.Checked && checkBoxProdCateg.Checked)
+            {
+                try
+                {
+                    decimal priceFrom = Convert.ToDecimal(textBoxProdPriceFrom.Text),
+                            priceTo = Convert.ToDecimal(textBoxProdPriceTo.Text);
+                    int prodCatId = Convert.ToInt32(comboBoxProdCategory.SelectedValue);
+                    this.productTableAdapter.FillByProdPriceCateg(myDataSet.product, priceFrom, priceTo, prodCatId);
+                }
+                catch
+                {
+                    MessageBox.Show("Не удалось считать числовое значение (используйте запятую вместо точки)");
+                }
+            }
+
+
+            if (checkBoxProdName.Checked && checkBoxProdPrice.Checked && checkBoxProdCateg.Checked)
+            {
+                try
+                {
+                    decimal priceFrom = Convert.ToDecimal(textBoxProdPriceFrom.Text),
+                            priceTo = Convert.ToDecimal(textBoxProdPriceTo.Text);
+                    int prodCatId = Convert.ToInt32(comboBoxProdCategory.SelectedValue);
+                    this.productTableAdapter.FillByProdAll(myDataSet.product, "%" + textBoxProdName.Text + "%", priceFrom, priceTo, prodCatId);
+                }
+                catch
+                {
+                    MessageBox.Show("ошибка поиска");
+                }
+            }
+
         }
 
         private void buttonProdDefault_Click(object sender, EventArgs e)
         {
             this.productTableAdapter.Fill(myDataSet.product);
+        }
+
+        private void dataGridView4_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int r = -1;
+            r = Convert.ToInt32(dataGridView4.CurrentRow.Cells["CT_ID"].Value);
+
+            //MessageBox.Show("event " +  r);
+
+            this.productTableAdapter.FillByProdCateg(myDataSet.product, r);
+
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult dialog = MessageBox.Show("Вы уверены, что хотите закрыть приложение?", "Выход", MessageBoxButtons.YesNo);
+            if (dialog == DialogResult.No)
+                e.Cancel = true;
+        }
+
+        private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int r = -1;
+            r = Convert.ToInt32(dataGridView1.CurrentRow.Cells["BK_ID"].Value);
+
+            textBoxBakeryId.Text = r.ToString();
+            textBoxBakeryAdrs.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString() + Environment.NewLine + 
+                                     dataGridView1.CurrentRow.Cells[2].Value.ToString();
+            textBoxBakeryCount.Text = employeeTableAdapter.ScalarQuery(r).ToString();
+            int holder_id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[3].Value);
+
         }
     }
 }

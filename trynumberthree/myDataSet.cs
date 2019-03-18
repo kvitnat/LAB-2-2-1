@@ -7,9 +7,12 @@
     }
 }
 
-namespace trynumberthree.myDataSetTableAdapters {
-    
-    
+namespace trynumberthree.myDataSetTableAdapters
+{
+    partial class productTableAdapter
+    {
+    }
+
     public partial class employeeTableAdapter {
     }
 }
