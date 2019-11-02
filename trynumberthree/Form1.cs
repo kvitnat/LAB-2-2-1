@@ -8,129 +8,137 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.Entity;
+using BakeryDataEF;
 
 namespace trynumberthree
 {
     public partial class Form1 : Form
     {
+        private BakeryDataEF.bakeries_networkEntities ctx;
+        private BakeryDataEF.bakeries_networkEntities ctx_pr;
+
         public Form1()
         {
             InitializeComponent();
+            ctx = new BakeryDataEF.bakeries_networkEntities();
+
+            ctx.bakery.Load();
+            this.bakeryBindingSource.DataSource = ctx.bakery.Local.ToBindingList();
+
+            ctx.employee.Load();
+            this.employeeBindingSource.DataSource = ctx.employee.Local.ToBindingList();
+
+            ctx.product.Load();
+            this.productBindingSource.DataSource = ctx.product.Local.ToBindingList();
+
+            ctx.categories.Load();
+            this.categoriesBindingSource.DataSource = ctx.categories.Local.ToBindingList();
+
+            ctx.holders.Load();
+            this.holdersBindingSource.DataSource = ctx.holders.Local.ToBindingList();
+
+            ctx.positions.Load();
+            this.positionsBindingSource.DataSource = ctx.positions.Local.ToBindingList();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "myDataSet1.categories". При необходимости она может быть перемещена или удалена.
-            this.categoriesTableAdapter.Fill(this.myDataSet.categories);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "myDataSet1.product". При необходимости она может быть перемещена или удалена.
-            this.productTableAdapter.Fill(this.myDataSet.product);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "myDataSet1.positions". При необходимости она может быть перемещена или удалена.
-            this.positionsTableAdapter.Fill(this.myDataSet.positions);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "myDataSet1.employee". При необходимости она может быть перемещена или удалена.
-            this.employeeTableAdapter.Fill(this.myDataSet.employee);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "myDataSet.holders". При необходимости она может быть перемещена или удалена.
-            this.holdersTableAdapter.Fill(this.myDataSet.holders);
-            // TODO: данная строка кода позволяет загрузить данные в таблицу "myDataSet.bakery". При необходимости она может быть перемещена или удалена.
-            this.bakeryTableAdapter.Fill(this.myDataSet.bakery);
-
+            
         }
 
         //save buttons
         private void buttonSaveBakery_Click(object sender, EventArgs e)
         {
-            //SqlCommandBuilder commandBuilder = new SqlCommandBuilder(bakeryTableAdapter);
-            this.bakeryTableAdapter.Update(myDataSet.bakery);
+            ctx.SaveChanges();
+            
         }
 
         private void buttonEmplSave_Click(object sender, EventArgs e)
         {
-            try
-            {
-                this.employeeTableAdapter.Update(myDataSet.employee);
-                Console.WriteLine("updating empl");
-            }
-            catch { Console.WriteLine("update failed"); }
+            ctx.SaveChanges();
+            
         }
 
         private void buttonProdSave_Click(object sender, EventArgs e)
         {
-            this.productTableAdapter.Update(myDataSet.product);
+            ctx.SaveChanges();
         }
 
         private void buttonAddEmployee_Click(object sender, EventArgs e)
         {
+
             string emName = textBoxName.Text;
             string emSurname = textBoxSurname.Text;
-            string emPos = comboBoxPos.SelectedValue.ToString();
-            string emBakery = comboBoxBakery.SelectedValue.ToString();
+            int emPos = Convert.ToInt32(comboBoxPos.SelectedValue.ToString());
+            int emBakery = Convert.ToInt32(comboBoxBakery.SelectedValue.ToString());
 
-            string sql = string.Format("Insert Into employee" +
-                   "(EM_NAME, EM_SURNAME, EM_BK, EM_P) Values(@emN, @emS, @emB, @emP)");
-
-            using (SqlCommand cmd = new SqlCommand(sql, bakeryTableAdapter.Connection))
+            employee empl = new employee
             {
-                cmd.Parameters.AddWithValue("@emN", emName);
-                cmd.Parameters.AddWithValue("@emS", emSurname);
-                cmd.Parameters.AddWithValue("@emB", emBakery);
-                cmd.Parameters.AddWithValue("@emP", emPos);
+                EM_NAME = emName,
+                EM_SURNAME = emSurname,
+                EM_P = emPos,
+                EM_BK = emBakery
+            };
 
-                bakeryTableAdapter.Connection.Open();
-                try
-                {
-                    cmd.ExecuteNonQuery();
-                }
-                catch
-                {
-                    MessageBox.Show("Не удалось добавить сотрудника.");
-                }
-            }
-            myDataSet.employee.Clear();
-            employeeTableAdapter.Fill(myDataSet.employee);
+            ctx.employee.Add(empl);
+            ctx.SaveChanges();
         }
 
         //delete buttons
         private void buttonDelRowBakery_Click(object sender, EventArgs e)
         {
-            int r = -1;
-            r = Convert.ToInt32(dataGridView1.CurrentRow.Cells["BK_ID"].Value);
-
-            MessageBox.Show("____" + r + "____");
-            if (employeeTableAdapter.ScalarQuery(r) == 0)
+            try
             {
-                this.bakeryBindingSource.RemoveCurrent();
-                this.bakeryTableAdapter.Update(myDataSet.bakery);
+                bakery bkr = (bakery)dataGridView1.CurrentRow.DataBoundItem;
+                var emp = (from c in ctx.employee where (c.EM_BK == bkr.BK_ID) select c).Any();
+                if (emp)
+                    MessageBox.Show("Нельзя удалить пекарню - увольте работников!");
+                else
+                {
+                    bakeryBindingSource.RemoveCurrent();
+                    ctx.SaveChanges();
+                }
+                    
             }
-            else
-                MessageBox.Show("Нельзя удалить пекарню - увольте работников!");
+            catch(Exception)
+            {
+                MessageBox.Show("Error.");
+                throw;
+            }
+            
         }
 
         private void buttonEmplDel_Click(object sender, EventArgs e)
         {
-            this.employeeBindingSource.RemoveCurrent();
-            this.employeeTableAdapter.Update(myDataSet.employee);
+            employeeBindingSource.RemoveCurrent();
         }
 
         private void buttonProdDel_Click(object sender, EventArgs e)
         {
-            this.productBindingSource.RemoveCurrent();
-            this.productTableAdapter.Update(myDataSet.product);
+            productBindingSource.RemoveCurrent();
         }
-
 
 
         private void buttonDelCat_Click(object sender, EventArgs e)
         {
-            int r = -1;
-            r = Convert.ToInt32(dataGridView4.CurrentRow.Cells["CT_ID"].Value);
-
-            MessageBox.Show("____" + r + "____");
-            if (productTableAdapter.ScalarQueryPrCat(r) == 0)
+            try
             {
-                this.categoriesBindingSource.RemoveCurrent();
-                this.categoriesTableAdapter.Update(myDataSet.categories);
+                categories ctg = (categories)dataGridView4.CurrentRow.DataBoundItem;
+                var b = (from c in ctx.product where (c.PR_CAT == ctg.CT_ID) select c).Any();
+                if (b)
+                    MessageBox.Show("Нельзя удалить непустую категорию");
+                else
+                {
+                    categoriesBindingSource.RemoveCurrent();
+                    ctx.SaveChanges();
+                }
             }
-            else
-                MessageBox.Show("Нельзя удалить непустую категорию");
+            catch(Exception)
+            {
+                MessageBox.Show("error");
+            }
+
         }
 
         private void buttonProdSearch_Click(object sender, EventArgs e)
@@ -140,18 +148,32 @@ namespace trynumberthree
 
         private void find_products()
         {
+
             if (checkBoxProdName.Checked && !checkBoxProdPrice.Checked && !checkBoxProdCateg.Checked)
             {
-                this.productTableAdapter.FillByProductName(myDataSet.product, "%" + textBoxProdName.Text + "%");
+                var products = (from p in ctx.product where p.PR_NAME.Contains(textBoxProdName.Text) select p).ToList();
+                this.productBindingSource.DataSource = products;
+                dataGridView3.Refresh();
             }
 
             if (!checkBoxProdName.Checked && checkBoxProdPrice.Checked && !checkBoxProdCateg.Checked)
             {
                 try
                 {
-                    decimal priceFrom = Convert.ToDecimal(textBoxProdPriceFrom.Text),
-                            priceTo = Convert.ToDecimal(textBoxProdPriceTo.Text);
-                    this.productTableAdapter.FillByProdPrice(myDataSet.product, priceFrom, priceTo);
+                    decimal priceFrom, priceTo;
+                    if (textBoxProdPriceFrom.Text == "")
+                        priceFrom = 0;
+                    else
+                        priceFrom = Convert.ToDecimal(textBoxProdPriceFrom.Text);
+
+                    if (textBoxProdPriceTo.Text == "")
+                        priceTo = 100;
+                    else
+                        priceTo = Convert.ToDecimal(textBoxProdPriceTo.Text);
+
+                    var products = (from p in ctx.product where p.PR_COST >= priceFrom && p.PR_COST <= priceTo select p).ToList();
+                    this.productBindingSource.DataSource = products;
+                    dataGridView3.Refresh();
                 }
                 catch
                 {
@@ -164,7 +186,9 @@ namespace trynumberthree
                 try
                 {
                     int prodCatId = Convert.ToInt32(comboBoxProdCategory.SelectedValue);
-                    this.productTableAdapter.FillByProdCateg(myDataSet.product, prodCatId);
+                    var products = (from p in ctx.product where p.PR_CAT == prodCatId select p).ToList();
+                    this.productBindingSource.DataSource = products;
+                    dataGridView3.Refresh();
                 }
                 catch
                 {
@@ -176,9 +200,21 @@ namespace trynumberthree
             {
                 try
                 {
-                    decimal priceFrom = Convert.ToDecimal(textBoxProdPriceFrom.Text),
-                            priceTo = Convert.ToDecimal(textBoxProdPriceTo.Text);
-                    this.productTableAdapter.FillByProdNamePrice(myDataSet.product, "%" + textBoxProdName.Text + "%", priceFrom, priceTo);
+                    decimal priceFrom, priceTo;
+                    if (textBoxProdPriceFrom.Text == "")
+                        priceFrom = 0;
+                    else
+                        priceFrom = Convert.ToDecimal(textBoxProdPriceFrom.Text);
+
+                    if (textBoxProdPriceTo.Text == "")
+                        priceTo = 100;
+                    else
+                        priceTo = Convert.ToDecimal(textBoxProdPriceTo.Text);
+
+                    var products = (from p in ctx.product where p.PR_NAME.Contains(textBoxProdName.Text) && 
+                                                                p.PR_COST >= priceFrom && p.PR_COST <= priceTo select p).ToList();
+                    this.productBindingSource.DataSource = products;
+                    dataGridView3.Refresh();
                 }
                 catch
                 {
@@ -191,7 +227,9 @@ namespace trynumberthree
                 try
                 {
                     int prodCatId = Convert.ToInt32(comboBoxProdCategory.SelectedValue);
-                    this.productTableAdapter.FillByProdNameCateg(myDataSet.product, "%" + textBoxProdName.Text + "%", prodCatId);
+                    var products = (from p in ctx.product where p.PR_NAME.Contains(textBoxProdName.Text) && p.PR_CAT == prodCatId select p).ToList();
+                    this.productBindingSource.DataSource = products;
+                    dataGridView3.Refresh();
                 }
                 catch
                 {
@@ -203,10 +241,22 @@ namespace trynumberthree
             {
                 try
                 {
-                    decimal priceFrom = Convert.ToDecimal(textBoxProdPriceFrom.Text),
-                            priceTo = Convert.ToDecimal(textBoxProdPriceTo.Text);
+                    decimal priceFrom, priceTo;
+                    if (textBoxProdPriceFrom.Text == "")
+                        priceFrom = 0;
+                    else
+                        priceFrom = Convert.ToDecimal(textBoxProdPriceFrom.Text);
+
+                    if (textBoxProdPriceTo.Text == "")
+                        priceTo = 100;
+                    else
+                        priceTo = Convert.ToDecimal(textBoxProdPriceTo.Text);
+
                     int prodCatId = Convert.ToInt32(comboBoxProdCategory.SelectedValue);
-                    this.productTableAdapter.FillByProdPriceCateg(myDataSet.product, priceFrom, priceTo, prodCatId);
+
+                    var products = (from p in ctx.product where p.PR_COST >= priceFrom && p.PR_COST <= priceTo && p.PR_CAT == prodCatId select p).ToList();
+                    this.productBindingSource.DataSource = products;
+                    dataGridView3.Refresh();
                 }
                 catch
                 {
@@ -219,10 +269,21 @@ namespace trynumberthree
             {
                 try
                 {
-                    decimal priceFrom = Convert.ToDecimal(textBoxProdPriceFrom.Text),
-                            priceTo = Convert.ToDecimal(textBoxProdPriceTo.Text);
+                    decimal priceFrom, priceTo;
+                    if (textBoxProdPriceFrom.Text == "")
+                        priceFrom = 0;
+                    else
+                        priceFrom = Convert.ToDecimal(textBoxProdPriceFrom.Text);
+
+                    if (textBoxProdPriceTo.Text == "")
+                        priceTo = 100;
+                    else
+                        priceTo = Convert.ToDecimal(textBoxProdPriceTo.Text);
+
                     int prodCatId = Convert.ToInt32(comboBoxProdCategory.SelectedValue);
-                    this.productTableAdapter.FillByProdAll(myDataSet.product, "%" + textBoxProdName.Text + "%", priceFrom, priceTo, prodCatId);
+                    var products = (from p in ctx.product where p.PR_NAME.Contains(textBoxProdName.Text) && p.PR_COST >= priceFrom && p.PR_COST <= priceTo && p.PR_CAT == prodCatId select p).ToList();
+                    this.productBindingSource.DataSource = products;
+                    dataGridView3.Refresh();
                 }
                 catch
                 {
@@ -234,19 +295,9 @@ namespace trynumberthree
 
         private void buttonProdDefault_Click(object sender, EventArgs e)
         {
-            this.productTableAdapter.Fill(myDataSet.product);
+            this.productBindingSource.DataSource = ctx.product.Local.ToBindingList();
         }
 
-        private void dataGridView4_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int r = -1;
-            r = Convert.ToInt32(dataGridView4.CurrentRow.Cells["CT_ID"].Value);
-
-            //MessageBox.Show("event " +  r);
-
-            this.productTableAdapter.FillByProdCateg(myDataSet.product, r);
-
-        }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -255,17 +306,52 @@ namespace trynumberthree
                 e.Cancel = true;
         }
 
-        private void dataGridView1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+
             int r = -1;
             r = Convert.ToInt32(dataGridView1.CurrentRow.Cells["BK_ID"].Value);
 
-            textBoxBakeryId.Text = r.ToString();
-            textBoxBakeryAdrs.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString() + Environment.NewLine + 
-                                     dataGridView1.CurrentRow.Cells[2].Value.ToString();
-            textBoxBakeryCount.Text = employeeTableAdapter.ScalarQuery(r).ToString();
-            int holder_id = Convert.ToInt32(dataGridView1.CurrentRow.Cells[3].Value);
+            try
+            {
+                textBoxBakeryId.Text = r.ToString();
+                textBoxBakeryAdrs.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString() + 
+                                         Environment.NewLine + 
+                                         dataGridView1.CurrentRow.Cells[2].Value.ToString();
 
+                bakery bkr = (bakery)dataGridView1.CurrentRow.DataBoundItem;
+                var b = (from c in ctx.employee where (c.EM_BK == bkr.BK_ID) select c).Count();
+                textBoxBakeryCount.Text = b.ToString();
+
+
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("error");
+            }
+            
+        }
+
+        private void dataGridView4_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int r = -1;
+            try
+            {
+                ctx_pr = new bakeries_networkEntities();
+                r = Convert.ToInt32(dataGridView4.CurrentRow.Cells["CT_ID"].Value);
+                categories ctg = (categories)dataGridView4.CurrentRow.DataBoundItem;
+                var query = from p in ctx_pr.product where p.PR_CAT == ctg.CT_ID select p;
+                query.Load();
+                productBindingSource1.DataSource = ctx_pr.product.Local.ToBindingList();
+            }
+            catch(Exception)
+            {
+
+            }
+
+            //MessageBox.Show("event " +  r);
+
+            //this.productTableAdapter.FillByProdCateg(myDataSet.product, r);
         }
     }
 }

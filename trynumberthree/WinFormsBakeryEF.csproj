@@ -33,8 +33,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Entity.Design" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,14 +57,6 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="myDataSet.cs">
-      <DependentUpon>myDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="myDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>myDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -75,17 +72,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="myDataSet.xsc">
-      <DependentUpon>myDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="myDataSet.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>myDataSet.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="myDataSet.xss">
-      <DependentUpon>myDataSet.xsd</DependentUpon>
-    </None>
+    <None Include="Properties\DataSources\BakeryDataEF.bakery.datasource" />
+    <None Include="Properties\DataSources\BakeryDataEF.categories.datasource" />
+    <None Include="Properties\DataSources\BakeryDataEF.employee.datasource" />
+    <None Include="Properties\DataSources\BakeryDataEF.holders.datasource" />
+    <None Include="Properties\DataSources\BakeryDataEF.positions.datasource" />
+    <None Include="Properties\DataSources\BakeryDataEF.product.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -98,6 +90,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BakeryDataEF\BakeryDataEF.csproj">
+      <Project>{1e5ee8d6-2e1e-4a10-bb90-1043183a9ab6}</Project>
+      <Name>BakeryDataEF</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

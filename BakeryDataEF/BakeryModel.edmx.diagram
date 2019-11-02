@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4b777907780f48f3af62779a82730832" Name="Diagram1" ZoomLevel="114">
+        <EntityTypeShape EntityType="bakeries_networkModel.bakery" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="bakeries_networkModel.categories" Width="1.5" PointX="5.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="bakeries_networkModel.employee" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="bakeries_networkModel.holders" Width="1.875" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="bakeries_networkModel.positions" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="bakeries_networkModel.product" Width="1.5" PointX="8" PointY="4.875" IsExpanded="true" />
+        <AssociationConnector Association="bakeries_networkModel.FK__bakery__BK_HOLDE__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="bakeries_networkModel.FK__employee__EM_BK__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="bakeries_networkModel.FK_product_categ" ManuallyRouted="false" />
+        <AssociationConnector Association="bakeries_networkModel.FK_pos" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -32,13 +32,28 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageBakery = new System.Windows.Forms.TabPage();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.buttonDelRowBakery = new System.Windows.Forms.Button();
             this.buttonSaveBakery = new System.Windows.Forms.Button();
+            this.textBoxBakeryCount = new System.Windows.Forms.TextBox();
+            this.textBoxBakeryAdrs = new System.Windows.Forms.TextBox();
+            this.textBoxBakeryId = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.BK_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bKCITYDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bKADRSDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bKHOLDERDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.holdersBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.myDataSet = new trynumberthree.myDataSet();
+            this.holders = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.employee = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bakeryBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPageEmployee = new System.Windows.Forms.TabPage();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.buttonEmplDel = new System.Windows.Forms.Button();
+            this.buttonEmplSave = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.buttonAddEmployee = new System.Windows.Forms.Button();
             this.comboBoxPos = new System.Windows.Forms.ComboBox();
@@ -50,15 +65,19 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.buttonEmplDel = new System.Windows.Forms.Button();
-            this.buttonEmplSave = new System.Windows.Forms.Button();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.eMIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.eMNAMEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.eMSURNAMEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.eMBKDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.eMPDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.bakery = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.positions = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPageProducts = new System.Windows.Forms.TabPage();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.buttonProdDel = new System.Windows.Forms.Button();
+            this.buttonProdSave = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.buttonProdDefault = new System.Windows.Forms.Button();
             this.buttonProdSearch = new System.Windows.Forms.Button();
@@ -71,58 +90,44 @@
             this.checkBoxProdCateg = new System.Windows.Forms.CheckBox();
             this.checkBoxProdPrice = new System.Windows.Forms.CheckBox();
             this.checkBoxProdName = new System.Windows.Forms.CheckBox();
-            this.buttonProdDel = new System.Windows.Forms.Button();
-            this.buttonProdSave = new System.Windows.Forms.Button();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.pRIDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pRNAMEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pRCOSTDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pRCATDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.productBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tabPageCategories = new System.Windows.Forms.TabPage();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.dataGridView5 = new System.Windows.Forms.DataGridView();
+            this.PR_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pRNAMEDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pRCOSTDataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PR_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pRCATDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.categoriesDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.buttonDelCat = new System.Windows.Forms.Button();
             this.dataGridView4 = new System.Windows.Forms.DataGridView();
-            this.cTNAMEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CT_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bakeryTableAdapter = new trynumberthree.myDataSetTableAdapters.bakeryTableAdapter();
-            this.holdersTableAdapter = new trynumberthree.myDataSetTableAdapters.holdersTableAdapter();
-            this.employeeTableAdapter = new trynumberthree.myDataSetTableAdapters.employeeTableAdapter();
-            this.positionsTableAdapter = new trynumberthree.myDataSetTableAdapters.positionsTableAdapter();
-            this.productTableAdapter = new trynumberthree.myDataSetTableAdapters.productTableAdapter();
-            this.categoriesTableAdapter = new trynumberthree.myDataSetTableAdapters.categoriesTableAdapter();
+            this.cTNAMEDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pRNAMEDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pRCOSTDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBoxBakeryId = new System.Windows.Forms.TextBox();
-            this.textBoxBakeryAdrs = new System.Windows.Forms.TextBox();
-            this.textBoxBakeryCount = new System.Windows.Forms.TextBox();
-            this.BK_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bKCITYDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bKADRSDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bKHOLDERDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPageBakery.SuspendLayout();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.holdersBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.myDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bakeryBindingSource)).BeginInit();
             this.tabPageEmployee.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.positionsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
             this.tabPageProducts.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.categoriesBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
@@ -131,10 +136,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).BeginInit();
-            this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -172,6 +173,16 @@
             this.tabPageBakery.Text = "Пекарни";
             this.tabPageBakery.UseVisualStyleBackColor = true;
             // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.buttonDelRowBakery);
+            this.panel2.Controls.Add(this.buttonSaveBakery);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.Location = new System.Drawing.Point(3, 488);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1031, 64);
+            this.panel2.TabIndex = 10;
+            // 
             // buttonDelRowBakery
             // 
             this.buttonDelRowBakery.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -202,6 +213,64 @@
             this.buttonSaveBakery.UseVisualStyleBackColor = false;
             this.buttonSaveBakery.Click += new System.EventHandler(this.buttonSaveBakery_Click);
             // 
+            // textBoxBakeryCount
+            // 
+            this.textBoxBakeryCount.Location = new System.Drawing.Point(858, 120);
+            this.textBoxBakeryCount.Name = "textBoxBakeryCount";
+            this.textBoxBakeryCount.Size = new System.Drawing.Size(61, 26);
+            this.textBoxBakeryCount.TabIndex = 9;
+            // 
+            // textBoxBakeryAdrs
+            // 
+            this.textBoxBakeryAdrs.Location = new System.Drawing.Point(858, 181);
+            this.textBoxBakeryAdrs.Multiline = true;
+            this.textBoxBakeryAdrs.Name = "textBoxBakeryAdrs";
+            this.textBoxBakeryAdrs.Size = new System.Drawing.Size(173, 55);
+            this.textBoxBakeryAdrs.TabIndex = 8;
+            // 
+            // textBoxBakeryId
+            // 
+            this.textBoxBakeryId.Location = new System.Drawing.Point(858, 62);
+            this.textBoxBakeryId.Name = "textBoxBakeryId";
+            this.textBoxBakeryId.Size = new System.Drawing.Size(61, 26);
+            this.textBoxBakeryId.TabIndex = 7;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Wheat;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label8.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.label8.Location = new System.Drawing.Point(686, 119);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(154, 25);
+            this.label8.TabIndex = 5;
+            this.label8.Text = "Кол-во сотр.: ";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Wheat;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.label7.Location = new System.Drawing.Point(742, 180);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(98, 25);
+            this.label7.TabIndex = 4;
+            this.label7.Text = "Адресс: ";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Wheat;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.label6.Location = new System.Drawing.Point(711, 61);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(129, 25);
+            this.label6.TabIndex = 3;
+            this.label6.Text = "Пекарня № ";
+            // 
             // dataGridView1
             // 
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -213,29 +282,73 @@
             this.BK_ID,
             this.bKCITYDataGridViewTextBoxColumn,
             this.bKADRSDataGridViewTextBoxColumn,
-            this.bKHOLDERDataGridViewTextBoxColumn});
+            this.bKHOLDERDataGridViewTextBoxColumn,
+            this.holders,
+            this.employee});
             this.dataGridView1.DataSource = this.bakeryBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(6, 6);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 28;
             this.dataGridView1.Size = new System.Drawing.Size(674, 316);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentDoubleClick);
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            // 
+            // BK_ID
+            // 
+            this.BK_ID.DataPropertyName = "BK_ID";
+            this.BK_ID.HeaderText = "BK_ID";
+            this.BK_ID.MinimumWidth = 2;
+            this.BK_ID.Name = "BK_ID";
+            this.BK_ID.Visible = false;
+            this.BK_ID.Width = 2;
+            // 
+            // bKCITYDataGridViewTextBoxColumn
+            // 
+            this.bKCITYDataGridViewTextBoxColumn.DataPropertyName = "BK_CITY";
+            this.bKCITYDataGridViewTextBoxColumn.HeaderText = "Город";
+            this.bKCITYDataGridViewTextBoxColumn.Name = "bKCITYDataGridViewTextBoxColumn";
+            this.bKCITYDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // bKADRSDataGridViewTextBoxColumn
+            // 
+            this.bKADRSDataGridViewTextBoxColumn.DataPropertyName = "BK_ADRS";
+            this.bKADRSDataGridViewTextBoxColumn.HeaderText = "Адрес";
+            this.bKADRSDataGridViewTextBoxColumn.Name = "bKADRSDataGridViewTextBoxColumn";
+            this.bKADRSDataGridViewTextBoxColumn.Width = 130;
+            // 
+            // bKHOLDERDataGridViewTextBoxColumn
+            // 
+            this.bKHOLDERDataGridViewTextBoxColumn.DataPropertyName = "BK_HOLDER";
+            this.bKHOLDERDataGridViewTextBoxColumn.DataSource = this.holdersBindingSource;
+            this.bKHOLDERDataGridViewTextBoxColumn.DisplayMember = "H_NAME";
+            this.bKHOLDERDataGridViewTextBoxColumn.HeaderText = "Директор";
+            this.bKHOLDERDataGridViewTextBoxColumn.Name = "bKHOLDERDataGridViewTextBoxColumn";
+            this.bKHOLDERDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.bKHOLDERDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.bKHOLDERDataGridViewTextBoxColumn.ValueMember = "H_ID";
+            this.bKHOLDERDataGridViewTextBoxColumn.Width = 150;
             // 
             // holdersBindingSource
             // 
-            this.holdersBindingSource.DataMember = "holders";
-            this.holdersBindingSource.DataSource = this.myDataSet;
+            this.holdersBindingSource.DataSource = typeof(BakeryDataEF.holders);
             // 
-            // myDataSet
+            // holders
             // 
-            this.myDataSet.DataSetName = "myDataSet";
-            this.myDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.holders.DataPropertyName = "holders";
+            this.holders.HeaderText = "holders";
+            this.holders.Name = "holders";
+            this.holders.Visible = false;
+            // 
+            // employee
+            // 
+            this.employee.DataPropertyName = "employee";
+            this.employee.HeaderText = "employee";
+            this.employee.Name = "employee";
+            this.employee.Visible = false;
             // 
             // bakeryBindingSource
             // 
-            this.bakeryBindingSource.DataMember = "bakery";
-            this.bakeryBindingSource.DataSource = this.myDataSet;
+            this.bakeryBindingSource.DataSource = typeof(BakeryDataEF.bakery);
             // 
             // tabPageEmployee
             // 
@@ -249,6 +362,42 @@
             this.tabPageEmployee.TabIndex = 1;
             this.tabPageEmployee.Text = "Сотрудники";
             this.tabPageEmployee.UseVisualStyleBackColor = true;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.buttonEmplDel);
+            this.panel3.Controls.Add(this.buttonEmplSave);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(3, 494);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1031, 58);
+            this.panel3.TabIndex = 5;
+            // 
+            // buttonEmplDel
+            // 
+            this.buttonEmplDel.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.buttonEmplDel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonEmplDel.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.buttonEmplDel.Location = new System.Drawing.Point(210, 3);
+            this.buttonEmplDel.Name = "buttonEmplDel";
+            this.buttonEmplDel.Size = new System.Drawing.Size(155, 51);
+            this.buttonEmplDel.TabIndex = 2;
+            this.buttonEmplDel.Text = "Удалить";
+            this.buttonEmplDel.UseVisualStyleBackColor = false;
+            this.buttonEmplDel.Click += new System.EventHandler(this.buttonEmplDel_Click);
+            // 
+            // buttonEmplSave
+            // 
+            this.buttonEmplSave.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.buttonEmplSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonEmplSave.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.buttonEmplSave.Location = new System.Drawing.Point(7, 3);
+            this.buttonEmplSave.Name = "buttonEmplSave";
+            this.buttonEmplSave.Size = new System.Drawing.Size(155, 51);
+            this.buttonEmplSave.TabIndex = 1;
+            this.buttonEmplSave.Text = "Сохранить";
+            this.buttonEmplSave.UseVisualStyleBackColor = false;
+            this.buttonEmplSave.Click += new System.EventHandler(this.buttonEmplSave_Click);
             // 
             // groupBox1
             // 
@@ -295,8 +444,7 @@
             // 
             // positionsBindingSource
             // 
-            this.positionsBindingSource.DataMember = "positions";
-            this.positionsBindingSource.DataSource = this.myDataSet;
+            this.positionsBindingSource.DataSource = typeof(BakeryDataEF.positions);
             // 
             // comboBoxBakery
             // 
@@ -359,32 +507,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Имя";
             // 
-            // buttonEmplDel
-            // 
-            this.buttonEmplDel.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.buttonEmplDel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonEmplDel.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.buttonEmplDel.Location = new System.Drawing.Point(210, 3);
-            this.buttonEmplDel.Name = "buttonEmplDel";
-            this.buttonEmplDel.Size = new System.Drawing.Size(155, 51);
-            this.buttonEmplDel.TabIndex = 2;
-            this.buttonEmplDel.Text = "Удалить";
-            this.buttonEmplDel.UseVisualStyleBackColor = false;
-            this.buttonEmplDel.Click += new System.EventHandler(this.buttonEmplDel_Click);
-            // 
-            // buttonEmplSave
-            // 
-            this.buttonEmplSave.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.buttonEmplSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonEmplSave.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.buttonEmplSave.Location = new System.Drawing.Point(7, 3);
-            this.buttonEmplSave.Name = "buttonEmplSave";
-            this.buttonEmplSave.Size = new System.Drawing.Size(155, 51);
-            this.buttonEmplSave.TabIndex = 1;
-            this.buttonEmplSave.Text = "Сохранить";
-            this.buttonEmplSave.UseVisualStyleBackColor = false;
-            this.buttonEmplSave.Click += new System.EventHandler(this.buttonEmplSave_Click);
-            // 
             // dataGridView2
             // 
             this.dataGridView2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -393,10 +515,13 @@
             this.dataGridView2.BackgroundColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.eMIDDataGridViewTextBoxColumn,
             this.eMNAMEDataGridViewTextBoxColumn,
             this.eMSURNAMEDataGridViewTextBoxColumn,
             this.eMBKDataGridViewTextBoxColumn,
-            this.eMPDataGridViewTextBoxColumn});
+            this.eMPDataGridViewTextBoxColumn,
+            this.bakery,
+            this.positions});
             this.dataGridView2.DataSource = this.employeeBindingSource;
             this.dataGridView2.Location = new System.Drawing.Point(6, 6);
             this.dataGridView2.Name = "dataGridView2";
@@ -404,6 +529,16 @@
             this.dataGridView2.RowTemplate.Height = 28;
             this.dataGridView2.Size = new System.Drawing.Size(705, 482);
             this.dataGridView2.TabIndex = 0;
+            // 
+            // eMIDDataGridViewTextBoxColumn
+            // 
+            this.eMIDDataGridViewTextBoxColumn.DataPropertyName = "EM_ID";
+            this.eMIDDataGridViewTextBoxColumn.HeaderText = "EM_ID";
+            this.eMIDDataGridViewTextBoxColumn.MinimumWidth = 2;
+            this.eMIDDataGridViewTextBoxColumn.Name = "eMIDDataGridViewTextBoxColumn";
+            this.eMIDDataGridViewTextBoxColumn.ReadOnly = true;
+            this.eMIDDataGridViewTextBoxColumn.Visible = false;
+            this.eMIDDataGridViewTextBoxColumn.Width = 2;
             // 
             // eMNAMEDataGridViewTextBoxColumn
             // 
@@ -443,10 +578,25 @@
             this.eMPDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.eMPDataGridViewTextBoxColumn.ValueMember = "POS_ID";
             // 
+            // bakery
+            // 
+            this.bakery.DataPropertyName = "bakery";
+            this.bakery.HeaderText = "bakery";
+            this.bakery.Name = "bakery";
+            this.bakery.ReadOnly = true;
+            this.bakery.Visible = false;
+            // 
+            // positions
+            // 
+            this.positions.DataPropertyName = "positions";
+            this.positions.HeaderText = "positions";
+            this.positions.Name = "positions";
+            this.positions.ReadOnly = true;
+            this.positions.Visible = false;
+            // 
             // employeeBindingSource
             // 
-            this.employeeBindingSource.DataMember = "employee";
-            this.employeeBindingSource.DataSource = this.myDataSet;
+            this.employeeBindingSource.DataSource = typeof(BakeryDataEF.employee);
             // 
             // tabPageProducts
             // 
@@ -460,6 +610,42 @@
             this.tabPageProducts.TabIndex = 2;
             this.tabPageProducts.Text = "Продукция";
             this.tabPageProducts.UseVisualStyleBackColor = true;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.buttonProdDel);
+            this.panel4.Controls.Add(this.buttonProdSave);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel4.Location = new System.Drawing.Point(3, 504);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1031, 48);
+            this.panel4.TabIndex = 14;
+            // 
+            // buttonProdDel
+            // 
+            this.buttonProdDel.BackColor = System.Drawing.Color.MistyRose;
+            this.buttonProdDel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonProdDel.ForeColor = System.Drawing.Color.DarkRed;
+            this.buttonProdDel.Location = new System.Drawing.Point(210, 6);
+            this.buttonProdDel.Name = "buttonProdDel";
+            this.buttonProdDel.Size = new System.Drawing.Size(155, 40);
+            this.buttonProdDel.TabIndex = 2;
+            this.buttonProdDel.Text = "Удалить";
+            this.buttonProdDel.UseVisualStyleBackColor = false;
+            this.buttonProdDel.Click += new System.EventHandler(this.buttonProdDel_Click);
+            // 
+            // buttonProdSave
+            // 
+            this.buttonProdSave.BackColor = System.Drawing.Color.MistyRose;
+            this.buttonProdSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonProdSave.ForeColor = System.Drawing.Color.DarkRed;
+            this.buttonProdSave.Location = new System.Drawing.Point(6, 6);
+            this.buttonProdSave.Name = "buttonProdSave";
+            this.buttonProdSave.Size = new System.Drawing.Size(155, 40);
+            this.buttonProdSave.TabIndex = 1;
+            this.buttonProdSave.Text = "Сохранить";
+            this.buttonProdSave.UseVisualStyleBackColor = false;
+            this.buttonProdSave.Click += new System.EventHandler(this.buttonProdSave_Click);
             // 
             // panel1
             // 
@@ -530,8 +716,7 @@
             // 
             // categoriesBindingSource
             // 
-            this.categoriesBindingSource.DataMember = "categories";
-            this.categoriesBindingSource.DataSource = this.myDataSet;
+            this.categoriesBindingSource.DataSource = typeof(BakeryDataEF.categories);
             // 
             // textBoxProdPriceTo
             // 
@@ -593,32 +778,6 @@
             this.checkBoxProdName.Text = "Название";
             this.checkBoxProdName.UseVisualStyleBackColor = false;
             // 
-            // buttonProdDel
-            // 
-            this.buttonProdDel.BackColor = System.Drawing.Color.MistyRose;
-            this.buttonProdDel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonProdDel.ForeColor = System.Drawing.Color.DarkRed;
-            this.buttonProdDel.Location = new System.Drawing.Point(210, 6);
-            this.buttonProdDel.Name = "buttonProdDel";
-            this.buttonProdDel.Size = new System.Drawing.Size(155, 40);
-            this.buttonProdDel.TabIndex = 2;
-            this.buttonProdDel.Text = "Удалить";
-            this.buttonProdDel.UseVisualStyleBackColor = false;
-            this.buttonProdDel.Click += new System.EventHandler(this.buttonProdDel_Click);
-            // 
-            // buttonProdSave
-            // 
-            this.buttonProdSave.BackColor = System.Drawing.Color.MistyRose;
-            this.buttonProdSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonProdSave.ForeColor = System.Drawing.Color.DarkRed;
-            this.buttonProdSave.Location = new System.Drawing.Point(6, 6);
-            this.buttonProdSave.Name = "buttonProdSave";
-            this.buttonProdSave.Size = new System.Drawing.Size(155, 40);
-            this.buttonProdSave.TabIndex = 1;
-            this.buttonProdSave.Text = "Сохранить";
-            this.buttonProdSave.UseVisualStyleBackColor = false;
-            this.buttonProdSave.Click += new System.EventHandler(this.buttonProdSave_Click);
-            // 
             // dataGridView3
             // 
             this.dataGridView3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -627,6 +786,7 @@
             this.dataGridView3.BackgroundColor = System.Drawing.Color.LightPink;
             this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.pRIDDataGridViewTextBoxColumn,
             this.pRNAMEDataGridViewTextBoxColumn,
             this.pRCOSTDataGridViewTextBoxColumn,
             this.pRCATDataGridViewTextBoxColumn});
@@ -637,36 +797,41 @@
             this.dataGridView3.Size = new System.Drawing.Size(654, 498);
             this.dataGridView3.TabIndex = 0;
             // 
+            // pRIDDataGridViewTextBoxColumn
+            // 
+            this.pRIDDataGridViewTextBoxColumn.DataPropertyName = "PR_ID";
+            this.pRIDDataGridViewTextBoxColumn.HeaderText = "PR_ID";
+            this.pRIDDataGridViewTextBoxColumn.MinimumWidth = 2;
+            this.pRIDDataGridViewTextBoxColumn.Name = "pRIDDataGridViewTextBoxColumn";
+            this.pRIDDataGridViewTextBoxColumn.Visible = false;
+            this.pRIDDataGridViewTextBoxColumn.Width = 2;
+            // 
             // pRNAMEDataGridViewTextBoxColumn
             // 
             this.pRNAMEDataGridViewTextBoxColumn.DataPropertyName = "PR_NAME";
             this.pRNAMEDataGridViewTextBoxColumn.HeaderText = "Название";
             this.pRNAMEDataGridViewTextBoxColumn.Name = "pRNAMEDataGridViewTextBoxColumn";
-            this.pRNAMEDataGridViewTextBoxColumn.Width = 150;
             // 
             // pRCOSTDataGridViewTextBoxColumn
             // 
             this.pRCOSTDataGridViewTextBoxColumn.DataPropertyName = "PR_COST";
             this.pRCOSTDataGridViewTextBoxColumn.HeaderText = "Цена";
             this.pRCOSTDataGridViewTextBoxColumn.Name = "pRCOSTDataGridViewTextBoxColumn";
-            this.pRCOSTDataGridViewTextBoxColumn.Width = 70;
             // 
             // pRCATDataGridViewTextBoxColumn
             // 
             this.pRCATDataGridViewTextBoxColumn.DataPropertyName = "PR_CAT";
             this.pRCATDataGridViewTextBoxColumn.DataSource = this.categoriesBindingSource;
             this.pRCATDataGridViewTextBoxColumn.DisplayMember = "CT_NAME";
-            this.pRCATDataGridViewTextBoxColumn.HeaderText = "Категория товара";
+            this.pRCATDataGridViewTextBoxColumn.HeaderText = "Категория";
             this.pRCATDataGridViewTextBoxColumn.Name = "pRCATDataGridViewTextBoxColumn";
             this.pRCATDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.pRCATDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.pRCATDataGridViewTextBoxColumn.ValueMember = "CT_ID";
-            this.pRCATDataGridViewTextBoxColumn.Width = 150;
             // 
             // productBindingSource
             // 
-            this.productBindingSource.DataMember = "product";
-            this.productBindingSource.DataSource = this.myDataSet;
+            this.productBindingSource.DataSource = typeof(BakeryDataEF.product);
             // 
             // tabPageCategories
             // 
@@ -682,6 +847,14 @@
             this.tabPageCategories.Text = "Категории ";
             this.tabPageCategories.UseVisualStyleBackColor = true;
             // 
+            // panel5
+            // 
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel5.Location = new System.Drawing.Point(0, 504);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(1037, 51);
+            this.panel5.TabIndex = 3;
+            // 
             // dataGridView5
             // 
             this.dataGridView5.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -690,15 +863,25 @@
             this.dataGridView5.BackgroundColor = System.Drawing.Color.LemonChiffon;
             this.dataGridView5.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView5.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.PR_ID,
             this.pRNAMEDataGridViewTextBoxColumn2,
             this.pRCOSTDataGridViewTextBoxColumn2,
-            this.PR_ID});
+            this.pRCATDataGridViewTextBoxColumn1,
+            this.categoriesDataGridViewTextBoxColumn});
             this.dataGridView5.DataSource = this.productBindingSource1;
             this.dataGridView5.Location = new System.Drawing.Point(325, 0);
             this.dataGridView5.Name = "dataGridView5";
             this.dataGridView5.RowTemplate.Height = 28;
             this.dataGridView5.Size = new System.Drawing.Size(394, 497);
             this.dataGridView5.TabIndex = 2;
+            // 
+            // PR_ID
+            // 
+            this.PR_ID.DataPropertyName = "PR_ID";
+            this.PR_ID.HeaderText = "PR_ID";
+            this.PR_ID.Name = "PR_ID";
+            this.PR_ID.ReadOnly = true;
+            this.PR_ID.Visible = false;
             // 
             // pRNAMEDataGridViewTextBoxColumn2
             // 
@@ -712,31 +895,23 @@
             this.pRCOSTDataGridViewTextBoxColumn2.HeaderText = "Цена";
             this.pRCOSTDataGridViewTextBoxColumn2.Name = "pRCOSTDataGridViewTextBoxColumn2";
             // 
-            // PR_ID
+            // pRCATDataGridViewTextBoxColumn1
             // 
-            this.PR_ID.DataPropertyName = "PR_ID";
-            this.PR_ID.HeaderText = "PR_ID";
-            this.PR_ID.Name = "PR_ID";
-            this.PR_ID.ReadOnly = true;
-            this.PR_ID.Visible = false;
+            this.pRCATDataGridViewTextBoxColumn1.DataPropertyName = "PR_CAT";
+            this.pRCATDataGridViewTextBoxColumn1.HeaderText = "PR_CAT";
+            this.pRCATDataGridViewTextBoxColumn1.Name = "pRCATDataGridViewTextBoxColumn1";
+            this.pRCATDataGridViewTextBoxColumn1.Visible = false;
+            // 
+            // categoriesDataGridViewTextBoxColumn
+            // 
+            this.categoriesDataGridViewTextBoxColumn.DataPropertyName = "categories";
+            this.categoriesDataGridViewTextBoxColumn.HeaderText = "categories";
+            this.categoriesDataGridViewTextBoxColumn.Name = "categoriesDataGridViewTextBoxColumn";
+            this.categoriesDataGridViewTextBoxColumn.Visible = false;
             // 
             // productBindingSource1
             // 
-            this.productBindingSource1.DataMember = "product";
-            this.productBindingSource1.DataSource = this.myDataSet;
-            // 
-            // buttonDelCat
-            // 
-            this.buttonDelCat.BackColor = System.Drawing.Color.LemonChiffon;
-            this.buttonDelCat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.buttonDelCat.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.buttonDelCat.Location = new System.Drawing.Point(4, 4);
-            this.buttonDelCat.Name = "buttonDelCat";
-            this.buttonDelCat.Size = new System.Drawing.Size(157, 44);
-            this.buttonDelCat.TabIndex = 1;
-            this.buttonDelCat.Text = "Удалить ";
-            this.buttonDelCat.UseVisualStyleBackColor = false;
-            this.buttonDelCat.Click += new System.EventHandler(this.buttonDelCat_Click);
+            this.productBindingSource1.DataSource = typeof(BakeryDataEF.product);
             // 
             // dataGridView4
             // 
@@ -746,54 +921,31 @@
             this.dataGridView4.BackgroundColor = System.Drawing.Color.LemonChiffon;
             this.dataGridView4.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView4.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.cTNAMEDataGridViewTextBoxColumn,
-            this.CT_ID});
+            this.CT_ID,
+            this.cTNAMEDataGridViewTextBoxColumn});
             this.dataGridView4.DataSource = this.categoriesBindingSource;
             this.dataGridView4.Location = new System.Drawing.Point(3, 3);
             this.dataGridView4.Name = "dataGridView4";
             this.dataGridView4.RowTemplate.Height = 28;
             this.dataGridView4.Size = new System.Drawing.Size(269, 497);
             this.dataGridView4.TabIndex = 0;
-            this.dataGridView4.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView4_CellContentDoubleClick);
-            // 
-            // cTNAMEDataGridViewTextBoxColumn
-            // 
-            this.cTNAMEDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cTNAMEDataGridViewTextBoxColumn.DataPropertyName = "CT_NAME";
-            this.cTNAMEDataGridViewTextBoxColumn.HeaderText = "Категория";
-            this.cTNAMEDataGridViewTextBoxColumn.Name = "cTNAMEDataGridViewTextBoxColumn";
+            this.dataGridView4.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView4_CellClick);
             // 
             // CT_ID
             // 
             this.CT_ID.DataPropertyName = "CT_ID";
             this.CT_ID.HeaderText = "CT_ID";
+            this.CT_ID.MinimumWidth = 2;
             this.CT_ID.Name = "CT_ID";
             this.CT_ID.ReadOnly = true;
             this.CT_ID.Visible = false;
+            this.CT_ID.Width = 2;
             // 
-            // bakeryTableAdapter
+            // cTNAMEDataGridViewTextBoxColumn
             // 
-            this.bakeryTableAdapter.ClearBeforeFill = true;
-            // 
-            // holdersTableAdapter
-            // 
-            this.holdersTableAdapter.ClearBeforeFill = true;
-            // 
-            // employeeTableAdapter
-            // 
-            this.employeeTableAdapter.ClearBeforeFill = true;
-            // 
-            // positionsTableAdapter
-            // 
-            this.positionsTableAdapter.ClearBeforeFill = true;
-            // 
-            // productTableAdapter
-            // 
-            this.productTableAdapter.ClearBeforeFill = true;
-            // 
-            // categoriesTableAdapter
-            // 
-            this.categoriesTableAdapter.ClearBeforeFill = true;
+            this.cTNAMEDataGridViewTextBoxColumn.DataPropertyName = "CT_NAME";
+            this.cTNAMEDataGridViewTextBoxColumn.HeaderText = "Название";
+            this.cTNAMEDataGridViewTextBoxColumn.Name = "cTNAMEDataGridViewTextBoxColumn";
             // 
             // pRNAMEDataGridViewTextBoxColumn1
             // 
@@ -815,135 +967,26 @@
             this.Column1.ReadOnly = true;
             this.Column1.Visible = false;
             // 
-            // label6
+            // dataGridViewTextBoxColumn1
             // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Wheat;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label6.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.label6.Location = new System.Drawing.Point(711, 61);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(129, 25);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "Пекарня № ";
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "holders";
+            this.dataGridViewTextBoxColumn1.HeaderText = "holders";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Visible = false;
             // 
-            // label7
+            // dataGridViewTextBoxColumn2
             // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Wheat;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label7.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.label7.Location = new System.Drawing.Point(742, 180);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(98, 25);
-            this.label7.TabIndex = 4;
-            this.label7.Text = "Адресс: ";
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "bakery";
+            this.dataGridViewTextBoxColumn2.HeaderText = "bakery";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Visible = false;
             // 
-            // label8
+            // dataGridViewTextBoxColumn3
             // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Wheat;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label8.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.label8.Location = new System.Drawing.Point(686, 119);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(154, 25);
-            this.label8.TabIndex = 5;
-            this.label8.Text = "Кол-во сотр.: ";
-            // 
-            // textBoxBakeryId
-            // 
-            this.textBoxBakeryId.Location = new System.Drawing.Point(858, 62);
-            this.textBoxBakeryId.Name = "textBoxBakeryId";
-            this.textBoxBakeryId.Size = new System.Drawing.Size(61, 26);
-            this.textBoxBakeryId.TabIndex = 7;
-            // 
-            // textBoxBakeryAdrs
-            // 
-            this.textBoxBakeryAdrs.Location = new System.Drawing.Point(858, 181);
-            this.textBoxBakeryAdrs.Multiline = true;
-            this.textBoxBakeryAdrs.Name = "textBoxBakeryAdrs";
-            this.textBoxBakeryAdrs.Size = new System.Drawing.Size(173, 55);
-            this.textBoxBakeryAdrs.TabIndex = 8;
-            // 
-            // textBoxBakeryCount
-            // 
-            this.textBoxBakeryCount.Location = new System.Drawing.Point(858, 120);
-            this.textBoxBakeryCount.Name = "textBoxBakeryCount";
-            this.textBoxBakeryCount.Size = new System.Drawing.Size(61, 26);
-            this.textBoxBakeryCount.TabIndex = 9;
-            // 
-            // BK_ID
-            // 
-            this.BK_ID.DataPropertyName = "BK_ID";
-            this.BK_ID.HeaderText = "BK_ID";
-            this.BK_ID.Name = "BK_ID";
-            this.BK_ID.ReadOnly = true;
-            this.BK_ID.Visible = false;
-            // 
-            // bKCITYDataGridViewTextBoxColumn
-            // 
-            this.bKCITYDataGridViewTextBoxColumn.DataPropertyName = "BK_CITY";
-            this.bKCITYDataGridViewTextBoxColumn.HeaderText = "Город";
-            this.bKCITYDataGridViewTextBoxColumn.Name = "bKCITYDataGridViewTextBoxColumn";
-            // 
-            // bKADRSDataGridViewTextBoxColumn
-            // 
-            this.bKADRSDataGridViewTextBoxColumn.DataPropertyName = "BK_ADRS";
-            this.bKADRSDataGridViewTextBoxColumn.HeaderText = "Адресс";
-            this.bKADRSDataGridViewTextBoxColumn.Name = "bKADRSDataGridViewTextBoxColumn";
-            this.bKADRSDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // bKHOLDERDataGridViewTextBoxColumn
-            // 
-            this.bKHOLDERDataGridViewTextBoxColumn.DataPropertyName = "BK_HOLDER";
-            this.bKHOLDERDataGridViewTextBoxColumn.DataSource = this.holdersBindingSource;
-            this.bKHOLDERDataGridViewTextBoxColumn.DisplayMember = "H_NAME";
-            this.bKHOLDERDataGridViewTextBoxColumn.HeaderText = "Директор";
-            this.bKHOLDERDataGridViewTextBoxColumn.Name = "bKHOLDERDataGridViewTextBoxColumn";
-            this.bKHOLDERDataGridViewTextBoxColumn.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.bKHOLDERDataGridViewTextBoxColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.bKHOLDERDataGridViewTextBoxColumn.ValueMember = "H_ID";
-            this.bKHOLDERDataGridViewTextBoxColumn.Width = 150;
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.buttonDelRowBakery);
-            this.panel2.Controls.Add(this.buttonSaveBakery);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(3, 488);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1031, 64);
-            this.panel2.TabIndex = 10;
-            // 
-            // panel3
-            // 
-            this.panel3.Controls.Add(this.buttonEmplDel);
-            this.panel3.Controls.Add(this.buttonEmplSave);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(3, 494);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1031, 58);
-            this.panel3.TabIndex = 5;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.buttonProdDel);
-            this.panel4.Controls.Add(this.buttonProdSave);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(3, 504);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1031, 48);
-            this.panel4.TabIndex = 14;
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.buttonDelCat);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel5.Location = new System.Drawing.Point(0, 504);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1037, 51);
-            this.panel5.TabIndex = 3;
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "positions";
+            this.dataGridViewTextBoxColumn3.HeaderText = "positions";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Visible = false;
             // 
             // Form1
             // 
@@ -958,17 +1001,19 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPageBakery.ResumeLayout(false);
             this.tabPageBakery.PerformLayout();
+            this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.holdersBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.myDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bakeryBindingSource)).EndInit();
             this.tabPageEmployee.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.positionsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).EndInit();
             this.tabPageProducts.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.categoriesBindingSource)).EndInit();
@@ -978,10 +1023,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.productBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView4)).EndInit();
-            this.panel2.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -992,33 +1033,21 @@
         private System.Windows.Forms.TabPage tabPageBakery;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TabPage tabPageEmployee;
-        private myDataSet myDataSet;
-        private System.Windows.Forms.BindingSource bakeryBindingSource;
-        private myDataSetTableAdapters.bakeryTableAdapter bakeryTableAdapter;
-        private System.Windows.Forms.BindingSource holdersBindingSource;
-        private myDataSetTableAdapters.holdersTableAdapter holdersTableAdapter;
+        
         private System.Windows.Forms.Button buttonSaveBakery;
         private System.Windows.Forms.Button buttonDelRowBakery;
         private System.Windows.Forms.Button buttonEmplDel;
         private System.Windows.Forms.Button buttonEmplSave;
         private System.Windows.Forms.DataGridView dataGridView2;
         //private myDataSet myDataSet1;
-        private System.Windows.Forms.BindingSource employeeBindingSource;
-        private myDataSetTableAdapters.employeeTableAdapter employeeTableAdapter;
-        private System.Windows.Forms.BindingSource positionsBindingSource;
-        private myDataSetTableAdapters.positionsTableAdapter positionsTableAdapter;
+        
         private System.Windows.Forms.TabPage tabPageProducts;
         private System.Windows.Forms.DataGridView dataGridView3;
-        private System.Windows.Forms.BindingSource productBindingSource;
-        private myDataSetTableAdapters.productTableAdapter productTableAdapter;
+        
 
-        private System.Windows.Forms.BindingSource categoriesBindingSource;
-        private myDataSetTableAdapters.categoriesTableAdapter categoriesTableAdapter;
+       
         private System.Windows.Forms.Button buttonProdDel;
         private System.Windows.Forms.Button buttonProdSave;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pRNAMEDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pRCOSTDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn pRCATDataGridViewTextBoxColumn;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox comboBoxPos;
         private System.Windows.Forms.ComboBox comboBoxBakery;
@@ -1029,26 +1058,15 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonAddEmployee;
-        private System.Windows.Forms.DataGridViewTextBoxColumn eMNAMEDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn eMSURNAMEDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn eMBKDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn eMPDataGridViewTextBoxColumn;
         private System.Windows.Forms.TabPage tabPageCategories;
         private System.Windows.Forms.DataGridView dataGridView4;
-        private System.Windows.Forms.Button buttonDelCat;
         private System.Windows.Forms.ComboBox comboBoxProdCategory;
         private System.Windows.Forms.TextBox textBoxProdPriceTo;
         private System.Windows.Forms.TextBox textBoxProdName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cTNAMEDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CT_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn pRNAMEDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn pRCOSTDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridView dataGridView5;
-        private System.Windows.Forms.BindingSource productBindingSource1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pRNAMEDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn pRCOSTDataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn PR_ID;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button buttonProdDefault;
         private System.Windows.Forms.Button buttonProdSearch;
@@ -1063,14 +1081,44 @@
         private System.Windows.Forms.TextBox textBoxBakeryCount;
         private System.Windows.Forms.TextBox textBoxBakeryAdrs;
         private System.Windows.Forms.TextBox textBoxBakeryId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn BK_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn bKCITYDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn bKADRSDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewComboBoxColumn bKHOLDERDataGridViewTextBoxColumn;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.BindingSource bakeryBindingSource;
+        private System.Windows.Forms.BindingSource employeeBindingSource;
+        private System.Windows.Forms.BindingSource productBindingSource;
+        private System.Windows.Forms.BindingSource categoriesBindingSource;
+        private System.Windows.Forms.BindingSource holdersBindingSource;
+        private System.Windows.Forms.BindingSource positionsBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.BindingSource productBindingSource1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PR_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pRNAMEDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pRCOSTDataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pRCATDataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn categoriesDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn BK_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bKCITYDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bKADRSDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn bKHOLDERDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn holders;
+        private System.Windows.Forms.DataGridViewTextBoxColumn employee;
+        private System.Windows.Forms.DataGridViewTextBoxColumn eMIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn eMNAMEDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn eMSURNAMEDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn eMBKDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn eMPDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bakery;
+        private System.Windows.Forms.DataGridViewTextBoxColumn positions;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pRIDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pRNAMEDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn pRCOSTDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewComboBoxColumn pRCATDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CT_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cTNAMEDataGridViewTextBoxColumn;
     }
 }
 

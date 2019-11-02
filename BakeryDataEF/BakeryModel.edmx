@@ -1,0 +1,354 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище bakeries_networkModel" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="bakery">
+          <Key>
+            <PropertyRef Name="BK_ID" />
+          </Key>
+          <Property Name="BK_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BK_CITY" Type="nvarchar" MaxLength="50" />
+          <Property Name="BK_ADRS" Type="nvarchar" MaxLength="50" />
+          <Property Name="BK_HOLDER" Type="int" />
+        </EntityType>
+        <EntityType Name="categories">
+          <Key>
+            <PropertyRef Name="CT_ID" />
+          </Key>
+          <Property Name="CT_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CT_NAME" Type="nvarchar" MaxLength="80" />
+        </EntityType>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="EM_ID" />
+          </Key>
+          <Property Name="EM_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EM_NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="EM_SURNAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="EM_BK" Type="int" />
+          <Property Name="EM_P" Type="int" />
+        </EntityType>
+        <EntityType Name="holders">
+          <Key>
+            <PropertyRef Name="H_ID" />
+          </Key>
+          <Property Name="H_ID" Type="int" Nullable="false" />
+          <Property Name="H_NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="H_EMAIL" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="positions">
+          <Key>
+            <PropertyRef Name="POS_ID" />
+          </Key>
+          <Property Name="POS_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="POS_NAME" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="PR_ID" />
+          </Key>
+          <Property Name="PR_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PR_NAME" Type="nvarchar" MaxLength="50" />
+          <Property Name="PR_COST" Type="money" />
+          <Property Name="PR_CAT" Type="int" />
+        </EntityType>
+        <Association Name="FK__bakery__BK_HOLDE__5BE2A6F2">
+          <End Role="holders" Type="Self.holders" Multiplicity="0..1" />
+          <End Role="bakery" Type="Self.bakery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="holders">
+              <PropertyRef Name="H_ID" />
+            </Principal>
+            <Dependent Role="bakery">
+              <PropertyRef Name="BK_HOLDER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__employee__EM_BK__4BAC3F29">
+          <End Role="bakery" Type="Self.bakery" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="employee" Type="Self.employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bakery">
+              <PropertyRef Name="BK_ID" />
+            </Principal>
+            <Dependent Role="employee">
+              <PropertyRef Name="EM_BK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pos">
+          <End Role="positions" Type="Self.positions" Multiplicity="0..1" />
+          <End Role="employee" Type="Self.employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="positions">
+              <PropertyRef Name="POS_ID" />
+            </Principal>
+            <Dependent Role="employee">
+              <PropertyRef Name="EM_P" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_product_categ">
+          <End Role="categories" Type="Self.categories" Multiplicity="0..1" />
+          <End Role="product" Type="Self.product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categories">
+              <PropertyRef Name="CT_ID" />
+            </Principal>
+            <Dependent Role="product">
+              <PropertyRef Name="PR_CAT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище bakeries_networkModelContainer">
+          <EntitySet Name="bakery" EntityType="Self.bakery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="categories" EntityType="Self.categories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="employee" EntityType="Self.employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="holders" EntityType="Self.holders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="positions" EntityType="Self.positions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="product" EntityType="Self.product" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__bakery__BK_HOLDE__5BE2A6F2" Association="Self.FK__bakery__BK_HOLDE__5BE2A6F2">
+            <End Role="holders" EntitySet="holders" />
+            <End Role="bakery" EntitySet="bakery" />
+          </AssociationSet>
+          <AssociationSet Name="FK__employee__EM_BK__4BAC3F29" Association="Self.FK__employee__EM_BK__4BAC3F29">
+            <End Role="bakery" EntitySet="bakery" />
+            <End Role="employee" EntitySet="employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pos" Association="Self.FK_pos">
+            <End Role="positions" EntitySet="positions" />
+            <End Role="employee" EntitySet="employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_product_categ" Association="Self.FK_product_categ">
+            <End Role="categories" EntitySet="categories" />
+            <End Role="product" EntitySet="product" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="bakeries_networkModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="bakery">
+          <Key>
+            <PropertyRef Name="BK_ID" />
+          </Key>
+          <Property Name="BK_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BK_CITY" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BK_ADRS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="BK_HOLDER" Type="Int32" />
+          <NavigationProperty Name="holders" Relationship="Self.FK__bakery__BK_HOLDE__5BE2A6F2" FromRole="bakery" ToRole="holders" />
+          <NavigationProperty Name="employee" Relationship="Self.FK__employee__EM_BK__4BAC3F29" FromRole="bakery" ToRole="employee" />
+        </EntityType>
+        <EntityType Name="categories">
+          <Key>
+            <PropertyRef Name="CT_ID" />
+          </Key>
+          <Property Name="CT_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CT_NAME" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="product" Relationship="Self.FK_product_categ" FromRole="categories" ToRole="product" />
+        </EntityType>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="EM_ID" />
+          </Key>
+          <Property Name="EM_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EM_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EM_SURNAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EM_BK" Type="Int32" />
+          <Property Name="EM_P" Type="Int32" />
+          <NavigationProperty Name="bakery" Relationship="Self.FK__employee__EM_BK__4BAC3F29" FromRole="employee" ToRole="bakery" />
+          <NavigationProperty Name="positions" Relationship="Self.FK_pos" FromRole="employee" ToRole="positions" />
+        </EntityType>
+        <EntityType Name="holders">
+          <Key>
+            <PropertyRef Name="H_ID" />
+          </Key>
+          <Property Name="H_ID" Type="Int32" Nullable="false" />
+          <Property Name="H_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="H_EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="bakery" Relationship="Self.FK__bakery__BK_HOLDE__5BE2A6F2" FromRole="holders" ToRole="bakery" />
+        </EntityType>
+        <EntityType Name="positions">
+          <Key>
+            <PropertyRef Name="POS_ID" />
+          </Key>
+          <Property Name="POS_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="POS_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="employee" Relationship="Self.FK_pos" FromRole="positions" ToRole="employee" />
+        </EntityType>
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="PR_ID" />
+          </Key>
+          <Property Name="PR_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PR_NAME" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PR_COST" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PR_CAT" Type="Int32" />
+          <NavigationProperty Name="categories" Relationship="Self.FK_product_categ" FromRole="product" ToRole="categories" />
+        </EntityType>
+        <Association Name="FK__bakery__BK_HOLDE__5BE2A6F2">
+          <End Role="holders" Type="Self.holders" Multiplicity="0..1" />
+          <End Role="bakery" Type="Self.bakery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="holders">
+              <PropertyRef Name="H_ID" />
+            </Principal>
+            <Dependent Role="bakery">
+              <PropertyRef Name="BK_HOLDER" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__employee__EM_BK__4BAC3F29">
+          <End Role="bakery" Type="Self.bakery" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="employee" Type="Self.employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bakery">
+              <PropertyRef Name="BK_ID" />
+            </Principal>
+            <Dependent Role="employee">
+              <PropertyRef Name="EM_BK" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_product_categ">
+          <End Role="categories" Type="Self.categories" Multiplicity="0..1" />
+          <End Role="product" Type="Self.product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="categories">
+              <PropertyRef Name="CT_ID" />
+            </Principal>
+            <Dependent Role="product">
+              <PropertyRef Name="PR_CAT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_pos">
+          <End Role="positions" Type="Self.positions" Multiplicity="0..1" />
+          <End Role="employee" Type="Self.employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="positions">
+              <PropertyRef Name="POS_ID" />
+            </Principal>
+            <Dependent Role="employee">
+              <PropertyRef Name="EM_P" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="bakeries_networkEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="bakery" EntityType="Self.bakery" />
+          <EntitySet Name="categories" EntityType="Self.categories" />
+          <EntitySet Name="employee" EntityType="Self.employee" />
+          <EntitySet Name="holders" EntityType="Self.holders" />
+          <EntitySet Name="positions" EntityType="Self.positions" />
+          <EntitySet Name="product" EntityType="Self.product" />
+          <AssociationSet Name="FK__bakery__BK_HOLDE__5BE2A6F2" Association="Self.FK__bakery__BK_HOLDE__5BE2A6F2">
+            <End Role="holders" EntitySet="holders" />
+            <End Role="bakery" EntitySet="bakery" />
+          </AssociationSet>
+          <AssociationSet Name="FK__employee__EM_BK__4BAC3F29" Association="Self.FK__employee__EM_BK__4BAC3F29">
+            <End Role="bakery" EntitySet="bakery" />
+            <End Role="employee" EntitySet="employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK_product_categ" Association="Self.FK_product_categ">
+            <End Role="categories" EntitySet="categories" />
+            <End Role="product" EntitySet="product" />
+          </AssociationSet>
+          <AssociationSet Name="FK_pos" Association="Self.FK_pos">
+            <End Role="positions" EntitySet="positions" />
+            <End Role="employee" EntitySet="employee" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище bakeries_networkModelContainer" CdmEntityContainer="bakeries_networkEntities">
+          <EntitySetMapping Name="bakery">
+            <EntityTypeMapping TypeName="bakeries_networkModel.bakery">
+              <MappingFragment StoreEntitySet="bakery">
+                <ScalarProperty Name="BK_ID" ColumnName="BK_ID" />
+                <ScalarProperty Name="BK_CITY" ColumnName="BK_CITY" />
+                <ScalarProperty Name="BK_ADRS" ColumnName="BK_ADRS" />
+                <ScalarProperty Name="BK_HOLDER" ColumnName="BK_HOLDER" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="categories">
+            <EntityTypeMapping TypeName="bakeries_networkModel.categories">
+              <MappingFragment StoreEntitySet="categories">
+                <ScalarProperty Name="CT_ID" ColumnName="CT_ID" />
+                <ScalarProperty Name="CT_NAME" ColumnName="CT_NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="employee">
+            <EntityTypeMapping TypeName="bakeries_networkModel.employee">
+              <MappingFragment StoreEntitySet="employee">
+                <ScalarProperty Name="EM_ID" ColumnName="EM_ID" />
+                <ScalarProperty Name="EM_NAME" ColumnName="EM_NAME" />
+                <ScalarProperty Name="EM_SURNAME" ColumnName="EM_SURNAME" />
+                <ScalarProperty Name="EM_BK" ColumnName="EM_BK" />
+                <ScalarProperty Name="EM_P" ColumnName="EM_P" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="holders">
+            <EntityTypeMapping TypeName="bakeries_networkModel.holders">
+              <MappingFragment StoreEntitySet="holders">
+                <ScalarProperty Name="H_ID" ColumnName="H_ID" />
+                <ScalarProperty Name="H_NAME" ColumnName="H_NAME" />
+                <ScalarProperty Name="H_EMAIL" ColumnName="H_EMAIL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="positions">
+            <EntityTypeMapping TypeName="bakeries_networkModel.positions">
+              <MappingFragment StoreEntitySet="positions">
+                <ScalarProperty Name="POS_ID" ColumnName="POS_ID" />
+                <ScalarProperty Name="POS_NAME" ColumnName="POS_NAME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="product">
+            <EntityTypeMapping TypeName="bakeries_networkModel.product">
+              <MappingFragment StoreEntitySet="product">
+                <ScalarProperty Name="PR_ID" ColumnName="PR_ID" />
+                <ScalarProperty Name="PR_NAME" ColumnName="PR_NAME" />
+                <ScalarProperty Name="PR_COST" ColumnName="PR_COST" />
+                <ScalarProperty Name="PR_CAT" ColumnName="PR_CAT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
